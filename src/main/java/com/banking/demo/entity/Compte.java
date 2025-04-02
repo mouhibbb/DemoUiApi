@@ -149,6 +149,14 @@ public class Compte {
         this.salaire = salaire;
     }
 
+    public Long getSolde() {
+        return solde;
+    }
+
+    public void setSolde(Long solde) {
+        this.solde = solde;
+    }
+
     public String getStatus_emploi() {
         return status_emploi;
     }
@@ -202,6 +210,8 @@ public class Compte {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idCompte;
+    private Long solde=0L;
+
     @Column(unique = true)
     private Long cin;
     private String nom;
@@ -237,6 +247,7 @@ public class Compte {
     @OneToMany (cascade =  CascadeType.ALL,mappedBy = "compte",fetch = FetchType.LAZY)
     @JsonIgnoreProperties("compte")
     private Set<Credit>credits;
+    
 
     public List<Virement> getVirements() {
         return virements;

@@ -4,6 +4,7 @@ import com.banking.demo.entity.Compte;
 import com.banking.demo.entity.Role;
 import com.banking.demo.entity.User;
 import com.banking.demo.repository.UserRepository;
+import org.apache.poi.ss.usermodel.Cell;
 import org.hibernate.mapping.Any;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -85,6 +86,24 @@ public class UserService {
 
     public UserRepository.UserAccountProjection UserGetRandomUser(){
         return userRepository.findRandomUserAndAccount();}
+    public Role parseRole(String value) {
+        return switch (value.trim().toLowerCase()) {
+            case "admin" -> Role.Admin;
+            case "user" -> Role.User;
+            default -> throw new IllegalArgumentException("Rôle inconnu : " + value);
+        };
+    }
+
+
+    public String getStringCellValue(Cell cell) {
+        if (cell == null) return "";
+        switch (cell.getCellType()) {
+            case STRING: return cell.getStringCellValue();
+            case NUMERIC: return String.valueOf((long) cell.getNumericCellValue());
+            case BOOLEAN: return String.valueOf(cell.getBooleanCellValue());
+            default: return "";
+        }
+    }
 
 
 

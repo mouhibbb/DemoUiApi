@@ -16,4 +16,6 @@ public interface CompteRepository extends JpaRepository<Compte,Long> {
     List<Compte> findByUserIdUser(@Param("idUser") Long idUser);
     List<Compte> findByStatusCompteBacaire(StatusCompteBacaire status);
     List<Compte> findByUser(User user);
+    List<Compte> findCompteByUserAndStatusCompteBacaire(User user, StatusCompteBacaire statusCompteBacaire);
+
 }

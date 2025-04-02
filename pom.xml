@@ -86,6 +86,13 @@
 			<artifactId>reactor-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+			<!-- Apache POI pour fichiers Excel -->
+			<dependency>
+				<groupId>org.apache.poi</groupId>
+				<artifactId>poi-ooxml</artifactId>
+				<version>5.2.3</version> <!-- Vérifie la dernière version sur Maven Central -->
+			</dependency>
+
 	</dependencies>
 
 	<build>
